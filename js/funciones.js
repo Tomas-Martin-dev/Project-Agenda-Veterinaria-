@@ -25,15 +25,15 @@ export function validaFormulario(e) {
         cita.MostrarCitaEditada({ ...objPaciente });
         
         // se guardan cambios en el session
-        let arraySessionS = JSON.parse(sessionStorage.getItem("arrayCitas"));
+        let arraySessionS = JSON.parse(localStorage.getItem("arrayCitas"));
         arraySessionS = cita.citas;
-        sessionStorage.setItem("arrayCitas", JSON.stringify(arraySessionS));
+        localStorage.setItem("arrayCitas", JSON.stringify(arraySessionS));
 
         uii.mostarAlerta("CITA EDITDA");
     }
     else {
         cita.agregarCita({ ...objPaciente })
-        sessionStorage.setItem("arrayCitas", JSON.stringify(cita.citas)); /* cuando se agrega una cita agrego el array de objetos */
+        localStorage.setItem("arrayCitas", JSON.stringify(cita.citas)); /* cuando se agrega una cita agrego el array de objetos */
         uii.mostarAlerta("¡paciente Agregado!");
     }
 
@@ -67,7 +67,7 @@ export function agregarID() {
 }
 
 export function actualizarCitas(){
-    let arrayS = sessionStorage.getItem("arrayCitas");
+    let arrayS = localStorage.getItem("arrayCitas");
     arrayS = JSON.parse(arrayS);
     
     if (arrayS !== null) {

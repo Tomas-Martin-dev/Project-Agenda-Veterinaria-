@@ -79,9 +79,9 @@ export default class AdminCitas {
                 this.citas = this.citas.filter(obj => obj.id !== e.id);
 
                 // Actualizo el array del sessionS
-                let arraySessionS = JSON.parse(sessionStorage.getItem("arrayCitas"));
+                let arraySessionS = JSON.parse(localStorage.getItem("arrayCitas"));
                 arraySessionS = this.citas;
-                sessionStorage.setItem("arrayCitas", JSON.stringify(arraySessionS));
+                localStorage.setItem("arrayCitas", JSON.stringify(arraySessionS));
 
                 // alerta de cita eliminada
                 uii.mostarAlerta("cita eliminada!!!")
