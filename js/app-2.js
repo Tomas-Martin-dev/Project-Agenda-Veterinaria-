@@ -1,13 +1,15 @@
-import { tomarValor, validaFormulario, actualizarCitas } from "./funciones.js";
+import { tomarValor, validaFormulario, crearDB, iterarDB } from "./funciones.js";
 import { pacienteInput, propietarioInput, emailInput, fechaInput, sintomasInput, form } from "./selectores.js";
 import AdminCitas from "./class/AdminCitas.js";
 
 const cita = new AdminCitas();
 // Eventos
 document.addEventListener("DOMContentLoaded", ()=>{
+    crearDB();
+    if (window.indexedDB.open("crm", 1)) {
+        iterarDB();
+    }
 
-    actualizarCitas(); /* tuve que moverl el codigo a una funcion porque en este archivo cita.citas se actualizaba pero en el archivo funciones.js no aparecian las citas agregas desde aca  */
-    
     // Creo nuevo Input
     let div = document.createElement("div");
     div.classList.add("mb-5");

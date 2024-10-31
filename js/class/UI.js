@@ -21,6 +21,6 @@ export default class UI {
         form.parentElement.insertBefore(div, form)
         setTimeout(() => {
             div.remove()
-        }, 2000);
+        }, 4000);
     }
 }
