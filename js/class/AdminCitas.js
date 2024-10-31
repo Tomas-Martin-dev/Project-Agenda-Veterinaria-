@@ -95,7 +95,7 @@ export default class AdminCitas {
             }
 
             const contenedorBtns = document.createElement("div");
-            contenedorBtns.classList.add('flex', 'justify-between', 'my-10');
+            contenedorBtns.classList.add('flex','flex-wrap','gap-2', 'justify-between', 'my-10');
             contenedorBtns.appendChild(btnE);
             contenedorBtns.appendChild(btnB);
 

@@ -635,6 +635,9 @@ video {
 .flex {
   display: flex;
 }
+.flex-wrap {
+  flex-flow: row wrap;
+}
 
 .h-screen {
   height: 100vh;
