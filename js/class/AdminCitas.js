@@ -1,5 +1,6 @@
 import { listaCitas, pacienteInput, propietarioInput, fechaInput, emailInput, sintomasInput, sumbitInput } from "../selectores.js";
 import { editar, objPaciente } from "../variables.js";
+import { borrarCitaDB } from "../funciones.js";
 import UI from "./UI.js";
 
 const uii = new UI();
@@ -61,7 +62,7 @@ export default class AdminCitas {
                 sintomasInput.value = e.sintomas;
                 document.querySelector("#telefono").value = e.telefono;
 
-                const copiaCita = {...e};
+                const copiaCita = {...e}; /* le hago una copia a los datos del paciente que toque el boton */
                 console.log(copiaCita);
                 Object.assign(objPaciente, copiaCita); /* objPaciente esta vacio cuando toquemos el boton editar, por ende le agremamos los datos de la cita que estamso iterando */
                 editar.value = true; 
@@ -78,10 +79,8 @@ export default class AdminCitas {
                 // Elimino la cita del array cita.citas...
                 this.citas = this.citas.filter(obj => obj.id !== e.id);
 
-                // Actualizo el array del sessionS
-                let arraySessionS = JSON.parse(localStorage.getItem("arrayCitas"));
-                arraySessionS = this.citas;
-                localStorage.setItem("arrayCitas", JSON.stringify(arraySessionS));
+                // Actualizo el indexedDB 
+                borrarCitaDB(e.id);
 
                 // alerta de cita eliminada
                 uii.mostarAlerta("cita eliminada!!!")
@@ -89,9 +88,7 @@ export default class AdminCitas {
                 // Verifico si borre todas las citas para mostrar mensaje de  que no hay citas...
                 if (this.citas.length === 0) {
                     listaCitas.innerHTML = `<p class="text-xl mt-5 mb-10 text-center">No Hay Pacientes</p>`
-                }
-                console.log(this.citas);
-                
+                }  
             }
 
             const contenedorBtns = document.createElement("div");
