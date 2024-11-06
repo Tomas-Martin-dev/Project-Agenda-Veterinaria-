@@ -117,6 +117,15 @@ export function borrarCitaDB(idElement){
     
 }
 
+export function scrollToElement() {
+    const element = document.getElementById('formulario-cita');
+
+    element.scrollIntoView({
+        behavior: 'smooth', // Hace que el desplazamiento sea suave
+        block: 'start' // Alinea el inicio del elemento con la parte superior de la ventana
+    });
+};
+
 function guardarClienteDB(cliente) {
 
     const transaction = DB.value.transaction(["citasV"], "readwrite");

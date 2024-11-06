@@ -1,6 +1,6 @@
 import { listaCitas, pacienteInput, propietarioInput, fechaInput, emailInput, sintomasInput, sumbitInput } from "../selectores.js";
 import { editar, objPaciente } from "../variables.js";
-import { borrarCitaDB } from "../funciones.js";
+import { borrarCitaDB, scrollToElement } from "../funciones.js";
 import UI from "./UI.js";
 
 const uii = new UI();
@@ -63,9 +63,9 @@ export default class AdminCitas {
                 document.querySelector("#telefono").value = e.telefono;
 
                 const copiaCita = {...e}; /* le hago una copia a los datos del paciente que toque el boton */
-                console.log(copiaCita);
                 Object.assign(objPaciente, copiaCita); /* objPaciente esta vacio cuando toquemos el boton editar, por ende le agremamos los datos de la cita que estamso iterando */
                 editar.value = true; 
+                scrollToElement(); /* llevo el la ventana al top */
                 sumbitInput.value = "guardar cambios";
                 uii.mostarAlerta("EDITA LA CITA, LUEGO ENVIALA",);
             }
