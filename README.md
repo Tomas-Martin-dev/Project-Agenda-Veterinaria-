@@ -7,3 +7,6 @@ I was inspired to do this project by my sister, she is a veterinarian, she write
 
 ## Project status  
 This project is already usable but it is far from finished. New fields will be added soon and the design will be improved to make it mobile-friendly. Any feedback will be welcome to continue improving my code  and gain knowledge!!
+
+## Feedback   
+In ultimate update the "IndexDB" function for disabled of the moment.
